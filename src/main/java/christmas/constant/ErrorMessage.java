@@ -6,15 +6,15 @@ public enum ErrorMessage {
     INVALID_ORDER("유효하지 않은 주문입니다. 다시 입력해 주세요."),
     ;
 
-    private static final String ERROR_MESSAGE_FORMAT = "[ERROR] %s";
-    
+    private static final String ERROR_MESSAGE_FORMAT = "[ERROR] %s (%s)";
+
     private final String message;
 
     ErrorMessage(String message) {
         this.message = message;
     }
 
-    public String message() {
-        return String.format(ERROR_MESSAGE_FORMAT, message);
+    public String message(String detailErrorMessage) {
+        return String.format(ERROR_MESSAGE_FORMAT, message, detailErrorMessage);
     }
 }

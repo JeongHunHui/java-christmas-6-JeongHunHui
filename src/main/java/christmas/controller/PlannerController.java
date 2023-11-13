@@ -1,7 +1,9 @@
 package christmas.controller;
 
+import christmas.constant.ErrorMessage;
 import christmas.dto.request.OrderRequest;
 import christmas.dto.request.VisitDateRequest;
+import christmas.exception.InvalidValueException;
 import christmas.model.Order;
 import christmas.service.OrderService;
 import christmas.view.InputView;
@@ -27,7 +29,7 @@ public class PlannerController {
 
     public VisitDateRequest readVisitDate() {
         output.writeVisitDateInputMessage();
-        return readUntilValidInput(() -> input.readVisitDate());
+        return readUntilValidInput(() -> input.readVisitDate(), ErrorMessage.INVALID_VISIT_DATE);
     }
 
     public Order readOrder() {
@@ -35,10 +37,10 @@ public class PlannerController {
         return readUntilValidInput(() -> {
             OrderRequest orderRequest = input.readOrder();
             return orderService.makeOrderByRequest(orderRequest);
-        });
+        }, ErrorMessage.INVALID_ORDER);
     }
 
-    private <T> T readUntilValidInput(Supplier<T> inputSupplier) {
+    private <T> T readUntilValidInput(Supplier<T> inputSupplier, ErrorMessage errorMessage) {
         T input = null;
         boolean isInValidInput = true;
 
@@ -46,8 +48,8 @@ public class PlannerController {
             try {
                 input = inputSupplier.get();
                 isInValidInput = false;
-            } catch (IllegalArgumentException illegalArgumentException) {
-                output.writeExceptionMessage(illegalArgumentException);
+            } catch (InvalidValueException e) {
+                output.writeExceptionMessage(errorMessage, e);
             }
         }
 
