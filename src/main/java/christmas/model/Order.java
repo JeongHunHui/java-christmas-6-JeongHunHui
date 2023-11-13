@@ -11,26 +11,26 @@ public record Order(Map<Menu, MenuCount> order) {
     private static final Integer MAX_MENU_COUNT = 20;
 
     public Order {
-        if (isTotalCountAboveMax()) {
+        if (isTotalCountAboveMax(order)) {
             throw new InvalidOrderException();
         }
 
-        if (isOrderOnlyIncludeDrink()) {
+        if (isOrderOnlyIncludeDrink(order)) {
             throw new InvalidOrderException();
         }
     }
 
-    private Boolean isOrderOnlyIncludeDrink() {
+    private Boolean isOrderOnlyIncludeDrink(Map<Menu, MenuCount> order) {
         return order.keySet().stream().allMatch(
             menu -> menu.getCategory().equals(MenuCategory.DRINK)
         );
     }
 
-    private Boolean isTotalCountAboveMax() {
-        return getTotalCount() > MAX_MENU_COUNT;
+    private Boolean isTotalCountAboveMax(Map<Menu, MenuCount> order) {
+        return getTotalCount(order) > MAX_MENU_COUNT;
     }
 
-    private Integer getTotalCount() {
+    private Integer getTotalCount(Map<Menu, MenuCount> order) {
         return order.values().stream().mapToInt(MenuCount::menuCount).sum();
     }
 
