@@ -1,5 +1,6 @@
 package christmas.model;
 
+import christmas.constant.DetailErrorMessage;
 import christmas.constant.menu.Menu;
 import christmas.constant.menu.MenuCategory;
 import christmas.exception.InvalidOrderException;
@@ -12,11 +13,11 @@ public record Order(Map<Menu, MenuCount> order) {
 
     public Order {
         if (isTotalCountAboveMax(order)) {
-            throw new InvalidOrderException();
+            throw new InvalidOrderException(DetailErrorMessage.TOTAL_MENU_COUNT_ABOVE_MAX);
         }
 
         if (isOrderOnlyIncludeDrink(order)) {
-            throw new InvalidOrderException();
+            throw new InvalidOrderException(DetailErrorMessage.ORDER_ONLY_INCLUDE_DRINK);
         }
     }
 

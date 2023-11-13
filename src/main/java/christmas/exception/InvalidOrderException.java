@@ -1,10 +1,10 @@
 package christmas.exception;
 
-import christmas.constant.ErrorMessage;
+import christmas.constant.DetailErrorMessage;
 
-public class InvalidOrderException extends IllegalArgumentException {
+public class InvalidOrderException extends InvalidValueException {
 
-    public InvalidOrderException() {
-        super(ErrorMessage.INVALID_ORDER.message());
+    public InvalidOrderException(DetailErrorMessage detailErrorMessage) {
+        super(detailErrorMessage);
     }
 }

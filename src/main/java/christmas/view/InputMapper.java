@@ -26,7 +26,7 @@ public class InputMapper {
 
     public OrderRequest inputToOrderRequest(String input) {
         if (InputValidator.isInvalidOrderInput(input)) {
-            throw new InvalidOrderException();
+            throw new InvalidOrderException(DetailErrorMessage.INVALID_ORDER_FORMAT);
         }
 
         return new OrderRequest(inputToOrderInfos(input));

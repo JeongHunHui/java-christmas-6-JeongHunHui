@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.constant.DetailErrorMessage;
 import christmas.constant.menu.Menu;
 import christmas.constant.menu.MenuBoard;
 import christmas.dto.request.OrderRequest;
@@ -23,7 +24,8 @@ public class OrderService {
         for (OrderInfo orderInfo : orderInfos) {
             final Menu menu = MenuBoard.getInstance().getMenu(orderInfo.menuName());
             if (orderMap.containsKey(menu)) {
-                throw new InvalidOrderException();
+                throw new InvalidOrderException(
+                    DetailErrorMessage.ORDER_CAN_NOT_CONTAINS_DUPLICATE_MENU);
             }
             orderMap.put(menu, orderInfo.menuCount());
         }
