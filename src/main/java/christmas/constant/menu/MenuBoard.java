@@ -24,7 +24,7 @@ public class MenuBoard {
 
     private static Map<String, Menu> makeMenuMap() {
         Map<String, Menu> menuMap = new HashMap<>();
-        Arrays.stream(Menu.values()).map(menu -> menuMap.put(menu.getName(), menu));
+        Arrays.stream(Menu.values()).forEach(menu -> menuMap.put(menu.getName(), menu));
         return menuMap;
     }
 
