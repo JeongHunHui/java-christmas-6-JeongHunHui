@@ -1,5 +1,6 @@
 package christmas.constant.menu;
 
+import christmas.model.MenuName;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,5 +30,9 @@ public class MenuBoard {
 
     public Boolean isInvalidMenuName(String name) {
         return !menuMap.containsKey(name);
+    }
+
+    public Menu getMenu(MenuName menuName) {
+        return menuMap.get(menuName.menuName());
     }
 }
