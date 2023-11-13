@@ -2,17 +2,17 @@ package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import christmas.dto.request.VisitDateRequest;
-import christmas.exception.InvalidVisitDateException;
-import christmas.validator.InputValidator;
 
 public class InputView {
 
+    private final InputMapper inputMapper;
+
+    public InputView(InputMapper inputMapper) {
+        this.inputMapper = inputMapper;
+    }
+
     public VisitDateRequest readVisitDate() {
-        String input = read();
-        if (InputValidator.isNonInteger(input)) {
-            throw new InvalidVisitDateException();
-        }
-        return new VisitDateRequest(Integer.valueOf(input));
+        return inputMapper.inputToVisitDateRequest(read());
     }
 
     private String read() {
