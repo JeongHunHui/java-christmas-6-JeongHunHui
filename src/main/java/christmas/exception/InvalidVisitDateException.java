@@ -1,10 +1,10 @@
 package christmas.exception;
 
-import christmas.constant.ErrorMessage;
+import christmas.constant.DetailErrorMessage;
 
-public class InvalidVisitDateException extends IllegalArgumentException {
+public class InvalidVisitDateException extends InvalidValueException {
 
-    public InvalidVisitDateException() {
-        super(ErrorMessage.INVALID_VISIT_DATE.message());
+    public InvalidVisitDateException(DetailErrorMessage detailErrorMessage) {
+        super(detailErrorMessage);
     }
 }

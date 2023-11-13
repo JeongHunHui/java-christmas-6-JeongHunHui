@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.constant.DetailErrorMessage;
 import christmas.dto.request.OrderRequest;
 import christmas.dto.request.VisitDateRequest;
 import christmas.exception.InvalidOrderException;
@@ -18,7 +19,7 @@ public class InputMapper {
 
     public VisitDateRequest inputToVisitDateRequest(String input) {
         if (InputValidator.isNonInteger(input)) {
-            throw new InvalidVisitDateException();
+            throw new InvalidVisitDateException(DetailErrorMessage.VISIT_DATE_NOT_INTEGER);
         }
         return new VisitDateRequest(Integer.valueOf(input));
     }
