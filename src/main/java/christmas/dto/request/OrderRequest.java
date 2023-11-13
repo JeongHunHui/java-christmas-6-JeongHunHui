@@ -12,6 +12,8 @@ import java.util.Map;
 
 public class OrderRequest {
 
+    private static final Integer MAX_MENU_COUNT = 20;
+
     private final Map<Menu, MenuCount> order;
 
     public OrderRequest(List<OrderInfo> orderInfos) {
@@ -22,7 +24,12 @@ public class OrderRequest {
             if (order.containsKey(menu)) {
                 throw new InvalidOrderException();
             }
-            order.put(menu, orderInfo.menuCount());
+            MenuCount menuCount = orderInfo.menuCount();
+            order.put(menu, menuCount);
+        }
+
+        if (isTotalCountAboveMax(order)) {
+            throw new InvalidOrderException();
         }
 
         if (isOrderOnlyIncludeDrink(order)) {
@@ -34,5 +41,13 @@ public class OrderRequest {
         return order.keySet().stream().allMatch(
             menu -> menu.getCategory().equals(MenuCategory.DRINK)
         );
+    }
+
+    private Boolean isTotalCountAboveMax(Map<Menu, MenuCount> order) {
+        return getTotalCount(order) > MAX_MENU_COUNT;
+    }
+
+    private Integer getTotalCount(Map<Menu, MenuCount> order) {
+        return order.values().stream().mapToInt(MenuCount::menuCount).sum();
     }
 }
