@@ -1,6 +1,7 @@
 package christmas.model;
 
-import christmas.exception.InvalidOrderException;
+import christmas.constant.DetailErrorMessage;
+import christmas.exception.InvalidMenuCountException;
 
 public record MenuCount(Integer menuCount) {
 
@@ -8,7 +9,7 @@ public record MenuCount(Integer menuCount) {
 
     public MenuCount {
         if (isMenuCountOutOfRange(menuCount)) {
-            throw new InvalidOrderException();
+            throw new InvalidMenuCountException(DetailErrorMessage.MENU_COUNT_OUT_OF_RANGE);
         }
     }
 
