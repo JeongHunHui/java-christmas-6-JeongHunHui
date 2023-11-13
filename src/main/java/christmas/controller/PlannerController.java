@@ -16,8 +16,12 @@ public class PlannerController {
     }
 
     public void run() {
+        VisitDateRequest visitDateRequest = readVisitDate();
+    }
+
+    public VisitDateRequest readVisitDate() {
         output.writeVisitDateInputMessage();
-        VisitDateRequest visitDateRequest = input.readVisitDate();
+        return readUntilValidInput(() -> input.readVisitDate());
     }
 
     private <T> T readUntilValidInput(Supplier<T> inputSupplier) {
