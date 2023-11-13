@@ -2,6 +2,7 @@ package christmas.dto.request;
 
 import christmas.constant.menu.Menu;
 import christmas.constant.menu.MenuBoard;
+import christmas.constant.menu.MenuCategory;
 import christmas.exception.InvalidOrderException;
 import christmas.model.MenuCount;
 import christmas.model.OrderInfo;
@@ -23,5 +24,15 @@ public class OrderRequest {
             }
             order.put(menu, orderInfo.menuCount());
         }
+
+        if (isOrderOnlyIncludeDrink(order)) {
+            throw new InvalidOrderException();
+        }
+    }
+
+    private Boolean isOrderOnlyIncludeDrink(Map<Menu, MenuCount> order) {
+        return order.keySet().stream().allMatch(
+            menu -> menu.getCategory().equals(MenuCategory.DRINK)
+        );
     }
 }

@@ -28,4 +28,8 @@ public enum Menu {
     public String getName() {
         return name;
     }
+
+    public MenuCategory getCategory() {
+        return category;
+    }
 }
