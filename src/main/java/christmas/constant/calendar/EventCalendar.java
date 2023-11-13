@@ -28,4 +28,8 @@ public class EventCalendar {
         return dayOfMonth < START_DAT_OF_MONTH || dayOfMonth > eventMonth.length(
             eventYear.isLeap());
     }
+
+    public Integer getEventMonthValue() {
+        return eventMonth.getValue();
+    }
 }
