@@ -8,6 +8,10 @@ public class OutputView {
         write(PlannerMessage.getVisitDateInputMessage());
     }
 
+    public void writeExceptionMessage(IllegalArgumentException illegalArgumentException) {
+        write(illegalArgumentException.getMessage());
+    }
+
     private void write(String message) {
         System.out.println(message);
     }
