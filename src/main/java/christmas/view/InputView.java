@@ -1,6 +1,7 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.dto.request.OrderRequest;
 import christmas.dto.request.VisitDateRequest;
 
 public class InputView {
@@ -13,6 +14,10 @@ public class InputView {
 
     public VisitDateRequest readVisitDate() {
         return inputMapper.inputToVisitDateRequest(read());
+    }
+
+    public OrderRequest readOrder() {
+        return inputMapper.inputToOrderRequest(read());
     }
 
     private String read() {

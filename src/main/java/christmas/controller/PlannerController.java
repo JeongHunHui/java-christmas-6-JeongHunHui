@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.dto.request.OrderRequest;
 import christmas.dto.request.VisitDateRequest;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -17,7 +18,7 @@ public class PlannerController {
 
     public void run() {
         VisitDateRequest visitDateRequest = readVisitDate();
-        readOrderInfo();
+        OrderRequest orderRequest = readOrder();
     }
 
     public VisitDateRequest readVisitDate() {
@@ -25,8 +26,9 @@ public class PlannerController {
         return readUntilValidInput(() -> input.readVisitDate());
     }
 
-    public void readOrderInfo() {
+    public OrderRequest readOrder() {
         output.writeOrderInfoInputMessage();
+        return readUntilValidInput(() -> input.readOrder());
     }
 
     private <T> T readUntilValidInput(Supplier<T> inputSupplier) {
