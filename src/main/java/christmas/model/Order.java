@@ -37,6 +37,14 @@ public record Order(Map<Menu, MenuCount> order) {
         return order.values().stream().mapToInt(MenuCount::menuCount).sum();
     }
 
+    public Price getTotalPrice() {
+        return new Price(order.keySet().stream().mapToInt(this::calculateMenuPrice).sum());
+    }
+
+    private Integer calculateMenuPrice(Menu menu) {
+        return menu.getPrice() * order.get(menu).menuCount();
+    }
+
     @Override
     public Map<Menu, MenuCount> order() {
         return Collections.unmodifiableMap(order);
