@@ -5,6 +5,7 @@ import christmas.constant.menu.Menu;
 import christmas.constant.menu.MenuCategory;
 import christmas.exception.InvalidOrderException;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 public record Order(Map<Menu, MenuCount> order) {
@@ -41,8 +42,18 @@ public record Order(Map<Menu, MenuCount> order) {
         return new Price(order.keySet().stream().mapToInt(this::calculateMenuPrice).sum());
     }
 
+    public Integer getMenuCountByCategory(MenuCategory menuCategory) {
+        return getMenuInOrderByCategory(menuCategory).stream()
+            .mapToInt(menu -> order.get(menu).menuCount()).sum();
+    }
+
     private Integer calculateMenuPrice(Menu menu) {
         return menu.getPrice() * order.get(menu).menuCount();
+    }
+
+    private List<Menu> getMenuInOrderByCategory(MenuCategory menuCategory) {
+        return order.keySet().stream().filter(menu -> menu.getCategory().equals(menuCategory))
+            .toList();
     }
 
     @Override
