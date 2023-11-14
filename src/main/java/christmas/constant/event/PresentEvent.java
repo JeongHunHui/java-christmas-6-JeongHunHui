@@ -7,14 +7,15 @@ import christmas.exception.EventNotAppliedException;
 import christmas.model.EventResult;
 import christmas.model.Order;
 import christmas.model.VisitDate;
+import java.util.List;
 
 public class PresentEvent extends BasicEvent {
 
     private final Menu presentMenu;
 
     PresentEvent(String name, Integer eventStartDate, Integer eventEndDate,
-        EventCondition condition, Menu presentMenu) {
-        super(name, eventStartDate, eventEndDate, condition,
+        List<EventCondition> conditions, Menu presentMenu) {
+        super(name, eventStartDate, eventEndDate, conditions,
             new PresentEventCalculator(presentMenu));
         this.presentMenu = presentMenu;
     }

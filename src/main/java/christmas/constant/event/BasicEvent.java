@@ -9,26 +9,27 @@ import christmas.model.EventResult;
 import christmas.model.Order;
 import christmas.model.Price;
 import christmas.model.VisitDate;
+import java.util.List;
 
 abstract class BasicEvent implements Event {
 
     private final String name;
-    private final EventCondition condition;
     private final EventCondition basicCondition;
+    private final List<EventCondition> conditions;
     private final EventCalculator eventCalculator;
 
     BasicEvent(String name, Integer eventStartDate, Integer eventEndDate,
-        EventCondition condition, EventCalculator eventCalculator) {
+        List<EventCondition> conditions, EventCalculator eventCalculator) {
         this.name = name;
-        this.condition = condition;
         this.basicCondition = new BasicEventCondition(eventStartDate, eventEndDate);
+        this.conditions = conditions;
         this.eventCalculator = eventCalculator;
     }
 
     @Override
     public Boolean isEventApplied(Order order, VisitDate visitDate) {
-        return basicCondition.isEventApplied(order, visitDate)
-            && condition.isEventApplied(order, visitDate);
+        return basicCondition.isEventApplied(order, visitDate) && conditions.stream()
+            .allMatch(condition -> condition.isEventApplied(order, visitDate));
     }
 
     @Override
