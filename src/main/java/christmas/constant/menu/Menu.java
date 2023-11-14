@@ -1,6 +1,7 @@
 package christmas.constant.menu;
 
 public enum Menu {
+    NONE(null, null, null),
     PINE_MUSHROOM_SOUP(MenuCategory.APPETIZER, "양송이수프", 6000),
     TAPAS(MenuCategory.APPETIZER, "타파스", 5500),
     CAESAR_SALAD(MenuCategory.APPETIZER, "시저샐러드", 8000),
