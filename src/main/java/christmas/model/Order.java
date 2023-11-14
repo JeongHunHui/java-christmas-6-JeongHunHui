@@ -26,13 +26,14 @@ public record Order(Map<Menu, MenuCount> order) {
     }
 
     private void validateOrderTotalCountBelowMax(Map<Menu, MenuCount> order) {
-        final Boolean isTotalCountAboveMax = getTotalCount(order) > MAX_MENU_COUNT;
+        final Boolean isTotalCountAboveMax =
+            order.values().stream().mapToInt(MenuCount::menuCount).sum() > MAX_MENU_COUNT;
         if (isTotalCountAboveMax) {
             throw new InvalidOrderException(DetailErrorMessage.TOTAL_MENU_COUNT_ABOVE_MAX);
         }
     }
 
-    private Integer getTotalCount(Map<Menu, MenuCount> order) {
+    public Integer getTotalCount() {
         return order.values().stream().mapToInt(MenuCount::menuCount).sum();
     }
 
