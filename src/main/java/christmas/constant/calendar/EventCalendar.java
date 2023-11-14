@@ -5,6 +5,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
+import java.util.List;
 
 public class EventCalendar {
 
@@ -14,10 +15,12 @@ public class EventCalendar {
 
     private final Year eventYear;
     private final Month eventMonth;
+    private final List<Integer> specialDays;
 
     private EventCalendar(CalendarConfig calendarConfig) {
         this.eventYear = calendarConfig.eventYear();
         this.eventMonth = calendarConfig.eventMonth();
+        this.specialDays = calendarConfig.specialDays();
     }
 
     public static synchronized EventCalendar getInstance() {
@@ -38,5 +41,9 @@ public class EventCalendar {
 
     public DayOfWeek getEventDayOfWeek(VisitDate visitDate) {
         return LocalDate.of(eventYear.getValue(), eventMonth, visitDate.visitDate()).getDayOfWeek();
+    }
+
+    public Boolean isSpecialDay(VisitDate visitDate) {
+        return specialDays.contains(visitDate.visitDate());
     }
 }
