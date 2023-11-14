@@ -49,6 +49,8 @@ public class PlannerController {
         output.writeEventPreviewMessage(visitDate);
         output.writeNewLine();
         output.writeOrderMenuMessage(order);
+        output.writeNewLine();
+        output.writeTotalPriceBeforeDiscount(order.getTotalPrice());
     }
 
     private <T> T readUntilValidInput(Supplier<T> inputSupplier, ErrorMessage errorMessage) {

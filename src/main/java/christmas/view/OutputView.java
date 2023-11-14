@@ -4,6 +4,7 @@ import christmas.constant.ErrorMessage;
 import christmas.constant.PlannerMessage;
 import christmas.exception.InvalidValueException;
 import christmas.model.Order;
+import christmas.model.Price;
 import christmas.model.VisitDate;
 
 public class OutputView {
@@ -31,6 +32,11 @@ public class OutputView {
     public void writeOrderMenuMessage(Order order) {
         write(PlannerMessage.getOrderMenuMessage());
         write(outputMaker.makeOrderOutput(order));
+    }
+
+    public void writeTotalPriceBeforeDiscount(Price totalPrice) {
+        write(PlannerMessage.getTotalPriceBeforeDiscountMessage());
+        write(totalPrice.toString());
     }
 
     public void writeNewLine() {

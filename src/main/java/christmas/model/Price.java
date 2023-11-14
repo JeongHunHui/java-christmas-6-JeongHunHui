@@ -8,6 +8,7 @@ import java.util.Locale;
 public record Price(Integer price) {
 
     private static final Integer MIN_PRICE = 0;
+    private static final String CURRENCY_STRING = "원";
     private static final NumberFormat formatter = NumberFormat.getInstance(Locale.US);
 
     public Price {
@@ -23,6 +24,6 @@ public record Price(Integer price) {
 
     @Override
     public String toString() {
-        return formatter.format(price);
+        return formatter.format(price) + CURRENCY_STRING;
     }
 }
