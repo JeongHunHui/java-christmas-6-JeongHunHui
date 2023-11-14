@@ -1,5 +1,8 @@
 package christmas.constant.calendar;
 
+import christmas.model.VisitDate;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 
@@ -31,5 +34,9 @@ public class EventCalendar {
 
     public Integer getEventMonthValue() {
         return eventMonth.getValue();
+    }
+
+    public DayOfWeek getEventDayOfWeek(VisitDate visitDate) {
+        return LocalDate.of(eventYear.getValue(), eventMonth, visitDate.visitDate()).getDayOfWeek();
     }
 }
