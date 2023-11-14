@@ -9,7 +9,7 @@ public enum DetailErrorMessage {
     ORDER_CAN_NOT_CONTAINS_DUPLICATE_MENU("주문은 중복된 메뉴로 구성될 수 없습니다."),
     ORDER_ONLY_INCLUDE_DRINK("주문의 메뉴가 음료로만 구성되어 있습니다."),
     TOTAL_MENU_COUNT_ABOVE_MAX("주문 가능한 최대 메뉴 수를 초과했습니다."),
-    ;
+    PRICE_CAN_NOT_BELOW_MIN_PRICE("가격이 최솟값보다 낮습니다.");
 
     private final String message;
 
