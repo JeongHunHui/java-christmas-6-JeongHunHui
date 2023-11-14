@@ -28,7 +28,7 @@ public class PlannerController {
         Order order = readOrder();
     }
 
-    public VisitDate readVisitDate() {
+    private VisitDate readVisitDate() {
         output.writeVisitDateInputMessage();
         VisitDateRequest visitDateRequest = readUntilValidInput(
             () -> input.readVisitDate(), ErrorMessage.INVALID_VISIT_DATE
@@ -36,7 +36,7 @@ public class PlannerController {
         return new VisitDate(visitDateRequest.visitDate());
     }
 
-    public Order readOrder() {
+    private Order readOrder() {
         output.writeOrderInfoInputMessage();
         return readUntilValidInput(() -> {
             OrderRequest orderRequest = input.readOrder();
