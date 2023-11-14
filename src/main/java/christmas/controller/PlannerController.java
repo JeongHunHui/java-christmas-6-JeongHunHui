@@ -47,6 +47,8 @@ public class PlannerController {
 
     private void writeEventPreview(Order order, VisitDate visitDate) {
         output.writeEventPreviewMessage(visitDate);
+        output.writeNewLine();
+        output.writeOrderMenuMessage(order);
     }
 
     private <T> T readUntilValidInput(Supplier<T> inputSupplier, ErrorMessage errorMessage) {
