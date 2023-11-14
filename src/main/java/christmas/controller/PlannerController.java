@@ -26,6 +26,7 @@ public class PlannerController {
     public void run() {
         VisitDate visitDate = readVisitDate();
         Order order = readOrder();
+        writeEventPreview(order, visitDate);
     }
 
     private VisitDate readVisitDate() {
@@ -42,6 +43,10 @@ public class PlannerController {
             OrderRequest orderRequest = input.readOrder();
             return orderService.makeOrderByRequest(orderRequest);
         }, ErrorMessage.INVALID_ORDER);
+    }
+
+    private void writeEventPreview(Order order, VisitDate visitDate) {
+        output.writeEventPreviewMessage(visitDate);
     }
 
     private <T> T readUntilValidInput(Supplier<T> inputSupplier, ErrorMessage errorMessage) {
