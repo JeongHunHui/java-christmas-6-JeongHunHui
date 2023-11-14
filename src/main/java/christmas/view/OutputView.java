@@ -3,15 +3,18 @@ package christmas.view;
 import christmas.constant.ErrorMessage;
 import christmas.constant.PlannerMessage;
 import christmas.exception.InvalidValueException;
+import christmas.model.MenuAndCount;
 import christmas.model.Order;
+import christmas.model.OrderInfo;
 import christmas.model.Price;
 import christmas.model.VisitDate;
+import java.util.List;
 
 public class OutputView {
 
     private static final String EMPTY = "";
 
-    private OutputMaker outputMaker = new OutputMaker();
+    private OutputMaker outputMaker;
 
     public OutputView(OutputMaker outputMaker) {
         this.outputMaker = outputMaker;
@@ -37,6 +40,11 @@ public class OutputView {
     public void writeTotalPriceBeforeDiscount(Price totalPrice) {
         write(PlannerMessage.getTotalPriceBeforeDiscountMessage());
         write(totalPrice.toString());
+    }
+
+    public void writePresentMenus(List<MenuAndCount> presentMenuAndCounts) {
+        write(PlannerMessage.getPresentMenusMessage());
+        write(outputMaker.makePresentMenusOutput(presentMenuAndCounts));
     }
 
     public void writeNewLine() {

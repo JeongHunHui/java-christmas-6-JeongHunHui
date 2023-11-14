@@ -12,7 +12,9 @@ public class OutputMaker {
 
     private static final String ORDER_FORMAT = "%s %d개";
     private static final String PRESENT_MENU_FORMAT = "%s %d개";
+    private static final String PRESENT_MENU_NOT_EXIST_MESSAGE = "없음";
     private static final String NEW_LINE = "\n";
+    private static final Integer ZERO = 0;
 
     public String makeOrderOutput(Order order) {
         Map<Menu, MenuCount> orderMap = order.order();
@@ -25,6 +27,9 @@ public class OutputMaker {
     }
 
     public String makePresentMenusOutput(List<MenuAndCount> presentMenuAndCounts) {
+        if (ZERO.equals(presentMenuAndCounts.size())) {
+            return PRESENT_MENU_NOT_EXIST_MESSAGE;
+        }
         StringJoiner stringJoiner = new StringJoiner(NEW_LINE);
         presentMenuAndCounts.forEach(
             menuAndCount -> stringJoiner.add(
