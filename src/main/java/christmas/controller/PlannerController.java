@@ -5,6 +5,7 @@ import christmas.dto.request.OrderRequest;
 import christmas.dto.request.VisitDateRequest;
 import christmas.exception.InvalidValueException;
 import christmas.model.Order;
+import christmas.model.VisitDate;
 import christmas.service.OrderService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -23,13 +24,16 @@ public class PlannerController {
     }
 
     public void run() {
-        VisitDateRequest visitDateRequest = readVisitDate();
-        Order orderRequest = readOrder();
+        VisitDate visitDate = readVisitDate();
+        Order order = readOrder();
     }
 
-    public VisitDateRequest readVisitDate() {
+    public VisitDate readVisitDate() {
         output.writeVisitDateInputMessage();
-        return readUntilValidInput(() -> input.readVisitDate(), ErrorMessage.INVALID_VISIT_DATE);
+        VisitDateRequest visitDateRequest = readUntilValidInput(
+            () -> input.readVisitDate(), ErrorMessage.INVALID_VISIT_DATE
+        );
+        return new VisitDate(visitDateRequest.visitDate());
     }
 
     public Order readOrder() {
