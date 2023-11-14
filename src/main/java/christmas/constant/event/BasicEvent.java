@@ -11,7 +11,7 @@ import christmas.model.Price;
 import christmas.model.VisitDate;
 import java.util.List;
 
-abstract class BasicEvent implements Event {
+public class BasicEvent implements Event {
 
     private final String name;
     private final EventCondition basicCondition;
