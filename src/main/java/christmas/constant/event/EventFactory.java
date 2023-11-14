@@ -9,6 +9,8 @@ import christmas.constant.event.condition.VisitDateDayOfWeekEventCondition;
 import christmas.constant.event.condition.VisitSpecialDateEventCondition;
 import christmas.constant.menu.Menu;
 import christmas.constant.menu.MenuCategory;
+import christmas.model.MenuAndCount;
+import christmas.model.MenuCount;
 import java.time.DayOfWeek;
 import java.util.List;
 import java.util.Set;
@@ -35,7 +37,7 @@ public final class EventFactory {
             1,
             31,
             List.of(new AboveMinPriceEventCondition(120000)),
-            Menu.CHAMPAGNE
+            List.of(new MenuAndCount(Menu.CHAMPAGNE, new MenuCount(1)))
         );
     }
 

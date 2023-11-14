@@ -3,7 +3,6 @@ package christmas.constant.event;
 import christmas.constant.event.calculator.EventCalculator;
 import christmas.constant.event.condition.BasicEventCondition;
 import christmas.constant.event.condition.EventCondition;
-import christmas.constant.menu.Menu;
 import christmas.exception.EventNotAppliedException;
 import christmas.model.EventResult;
 import christmas.model.Order;
@@ -45,7 +44,7 @@ public class BasicEvent implements Event {
     @Override
     public EventResult getEventResult(Order order, VisitDate visitDate) {
         if (isEventApplied(order, visitDate)) {
-            return new EventResult(name, getEventBenefitPrice(order, visitDate), Menu.NONE);
+            return new EventResult(name, getEventBenefitPrice(order, visitDate), List.of());
         }
         throw new EventNotAppliedException();
     }

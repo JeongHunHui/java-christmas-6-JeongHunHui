@@ -1,7 +1,13 @@
 package christmas.model;
 
-import christmas.constant.menu.Menu;
+import java.util.List;
 
-public record EventResult(String eventName, Price benefitPrice, Menu menu) {
+public record EventResult(String eventName, Price benefitPrice,
+                          List<MenuAndCount> presentMenuAndCounts) {
 
+    private static final Integer ZERO = 0;
+
+    public Boolean isPresentMenuExists() {
+        return presentMenuAndCounts.size() > ZERO;
+    }
 }
