@@ -10,6 +10,12 @@ public class OutputView {
 
     private static final String EMPTY = "";
 
+    private OutputMaker outputMaker = new OutputMaker();
+
+    public OutputView(OutputMaker outputMaker) {
+        this.outputMaker = outputMaker;
+    }
+
     public void writeVisitDateInputMessage() {
         write(PlannerMessage.getVisitDateInputMessage());
     }
@@ -24,6 +30,7 @@ public class OutputView {
 
     public void writeOrderMenuMessage(Order order) {
         write(PlannerMessage.getOrderMenuMessage());
+        write(outputMaker.makeOrderOutput(order));
     }
 
     public void writeNewLine() {
