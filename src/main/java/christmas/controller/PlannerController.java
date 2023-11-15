@@ -23,7 +23,7 @@ public class PlannerController {
     private final InputView input;
     private final OrderService orderService;
 
-    public PlannerController(OutputView output, InputView input, OrderService orderService) {
+    PlannerController(OutputView output, InputView input, OrderService orderService) {
         this.output = output;
         this.input = input;
         this.orderService = orderService;
