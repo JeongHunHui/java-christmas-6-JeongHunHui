@@ -12,6 +12,7 @@ public final class PlannerMessage {
     private static final String TOTAL_PRICE_BEFORE_DISCOUNT_MESSAGE = "<할인 전 총주문 금액>";
     private static final String PRESENT_MENU_MESSAGE = "<증정 메뉴>";
     private static final String EVENT_RESULT_MESSAGE = "<혜택 내역>";
+    private static final String TOTAL_BENEFIT_PRICE_MESSAGE = "<총혜택 금액>";
 
     private PlannerMessage() {
         // 상수 클래스이므로 인스턴스 생성 방지
@@ -45,5 +46,9 @@ public final class PlannerMessage {
 
     public static String getEventResultMessage() {
         return EVENT_RESULT_MESSAGE;
+    }
+
+    public static String getTotalBenefitPriceMessage() {
+        return TOTAL_BENEFIT_PRICE_MESSAGE;
     }
 }

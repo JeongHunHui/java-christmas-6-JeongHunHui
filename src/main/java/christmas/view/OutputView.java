@@ -52,6 +52,11 @@ public class OutputView {
         write(outputMaker.makeEventResultOutput(eventResults));
     }
 
+    public void writeTotalBenefitPrice(Price totalBenefitPrice) {
+        write(PlannerMessage.getTotalBenefitPriceMessage());
+        write(totalBenefitPrice.toString());
+    }
+
     public void writeNewLine() {
         write(EMPTY);
     }

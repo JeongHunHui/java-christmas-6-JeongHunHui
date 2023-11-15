@@ -64,6 +64,8 @@ public class PlannerController {
         output.writePresentMenus(eventService.getPresentMenuAndCounts(eventResults));
         output.writeNewLine();
         output.writeEventResult(eventResults);
+        output.writeNewLine();
+        output.writeTotalBenefitPrice(eventService.getTotalBenefitPrice(eventResults));
     }
 
     private <T> T readUntilValidInput(Supplier<T> inputSupplier, ErrorMessage errorMessage) {
