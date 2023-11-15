@@ -14,7 +14,7 @@ public class ActiveEventBadges {
         this.eventBadges = eventBadgeConfig.getSortedBadges();
     }
 
-    public static ActiveEventBadges getInstance() {
+    public static synchronized ActiveEventBadges getInstance() {
         if (instance == null) {
             instance = new ActiveEventBadges(eventBadgeConfig);
         }
