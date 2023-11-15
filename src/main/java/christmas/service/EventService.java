@@ -2,6 +2,7 @@ package christmas.service;
 
 import christmas.model.EventResult;
 import christmas.model.MenuAndCount;
+import christmas.model.Order;
 import christmas.model.Price;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,5 +24,11 @@ public class EventService {
     public Price getTotalBenefitPrice(List<EventResult> eventResults) {
         return new Price(
             eventResults.stream().map(EventResult::benefitPrice).mapToInt(Price::price).sum());
+    }
+
+    public Price calculateTotalPriceAfterDiscount(Order order, List<EventResult> eventResults) {
+        return new Price(order.getTotalPrice().price() - eventResults.stream()
+            .filter(eventResult -> !eventResult.isPresentMenuExists())
+            .map(EventResult::benefitPrice).mapToInt(Price::price).sum());
     }
 }
