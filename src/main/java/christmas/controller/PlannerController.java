@@ -11,8 +11,8 @@ import christmas.model.badge.ActiveEventBadges;
 import christmas.model.event.ActiveEvents;
 import christmas.service.EventService;
 import christmas.service.OrderService;
-import christmas.view.InputView;
-import christmas.view.OutputView;
+import christmas.view.input.InputView;
+import christmas.view.output.OutputView;
 import java.util.function.Supplier;
 
 public class PlannerController {

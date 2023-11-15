@@ -1,4 +1,4 @@
-package christmas.view;
+package christmas.view.output;
 
 import christmas.constant.ErrorMessage;
 import christmas.exception.InvalidValueException;

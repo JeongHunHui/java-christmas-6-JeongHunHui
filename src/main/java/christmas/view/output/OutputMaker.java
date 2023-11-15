@@ -1,4 +1,4 @@
-package christmas.view;
+package christmas.view.output;
 
 import christmas.model.EventResults;
 import christmas.model.MenuAndCount;

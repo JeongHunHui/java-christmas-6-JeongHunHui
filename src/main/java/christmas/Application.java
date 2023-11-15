@@ -3,11 +3,11 @@ package christmas;
 import christmas.controller.PlannerController;
 import christmas.service.EventService;
 import christmas.service.OrderService;
-import christmas.view.InputMapper;
-import christmas.view.InputView;
-import christmas.view.OutputMaker;
-import christmas.view.OutputMessage;
-import christmas.view.OutputView;
+import christmas.view.input.InputMapper;
+import christmas.view.input.InputView;
+import christmas.view.output.OutputMaker;
+import christmas.view.output.OutputMessage;
+import christmas.view.output.OutputView;
 
 public class Application {
 

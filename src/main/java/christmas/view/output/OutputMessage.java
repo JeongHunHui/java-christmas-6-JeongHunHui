@@ -1,4 +1,4 @@
-package christmas.view;
+package christmas.view.output;
 
 import christmas.model.calendar.EventCalendar;
 import christmas.model.VisitDate;
