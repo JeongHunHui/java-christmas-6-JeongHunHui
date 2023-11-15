@@ -27,7 +27,7 @@ public final class OutputMessage {
 
     public String getEventPreviewMessage(VisitDate visitDate) {
         return String.format(EVENT_PREVIEW_MESSAGE,
-            EventCalendar.getInstance().getEventMonthValue(), visitDate.visitDate());
+            EventCalendar.getInstance().getEventMonthValue(), visitDate.dayOfMonth());
     }
 
     public String getOrderMenuMessage() {

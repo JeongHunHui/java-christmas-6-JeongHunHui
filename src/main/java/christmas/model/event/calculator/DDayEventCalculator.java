@@ -16,7 +16,7 @@ public class DDayEventCalculator implements EventCalculator {
 
     @Override
     public BenefitPrice calculateBenefitPrice(Order order, VisitDate visitDate) {
-        return new BenefitPrice(defaultDiscountPrice + visitDate.visitDate() * discountPricePerDay
+        return new BenefitPrice(defaultDiscountPrice + visitDate.dayOfMonth() * discountPricePerDay
             - discountPricePerDay);
     }
 }

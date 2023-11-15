@@ -41,7 +41,7 @@ public class PlannerController {
         VisitDateRequest visitDateRequest = readUntilValidInput(
             () -> input.readVisitDate(), ErrorMessage.INVALID_VISIT_DATE
         );
-        return new VisitDate(visitDateRequest.visitDate());
+        return new VisitDate(visitDateRequest.dayOfMonth());
     }
 
     private Order readOrder() {

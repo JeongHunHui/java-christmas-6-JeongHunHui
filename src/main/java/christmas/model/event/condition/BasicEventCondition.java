@@ -22,7 +22,7 @@ public class BasicEventCondition implements EventCondition {
     }
 
     private Boolean isVisitDateInRange(VisitDate visitDate) {
-        return visitDate.visitDate() >= eventStartDate && visitDate.visitDate() <= eventEndDate;
+        return visitDate.dayOfMonth() >= eventStartDate && visitDate.dayOfMonth() <= eventEndDate;
     }
 
     private Boolean isTotalPriceInRange(Price totalPrice) {

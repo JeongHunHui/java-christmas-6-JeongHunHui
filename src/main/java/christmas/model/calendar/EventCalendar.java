@@ -39,10 +39,11 @@ public class EventCalendar {
     }
 
     public DayOfWeek getEventDayOfWeek(VisitDate visitDate) {
-        return LocalDate.of(eventYear.getValue(), eventMonth, visitDate.visitDate()).getDayOfWeek();
+        return LocalDate.of(eventYear.getValue(), eventMonth, visitDate.dayOfMonth())
+            .getDayOfWeek();
     }
 
     public Boolean isSpecialDay(VisitDate visitDate) {
-        return specialDays.contains(visitDate.visitDate());
+        return specialDays.contains(visitDate.dayOfMonth());
     }
 }
