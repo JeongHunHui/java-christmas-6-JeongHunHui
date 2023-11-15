@@ -1,9 +1,9 @@
-package christmas.constant;
+package christmas.view;
 
 import christmas.constant.calendar.EventCalendar;
 import christmas.model.VisitDate;
 
-public final class PlannerMessage {
+public final class OutputMessage {
 
     private static final String VISIT_DATE_INPUT_MESSAGE = "%d월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)";
     private static final String ORDER_INFO_INPUT_MESSAGE = "주문하실 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)";
@@ -16,49 +16,45 @@ public final class PlannerMessage {
     private static final String TOTAL_PRICE_AFTER_DISCOUNT_MESSAGE = "<할인 후 예상 결제 금액>";
     private static final String EVENT_BADGE_MESSAGE = "<%d월 이벤트 배지>";
 
-    private PlannerMessage() {
-        // 상수 클래스이므로 인스턴스 생성 방지
-    }
-
-    public static String getVisitDateInputMessage() {
+    public String getVisitDateInputMessage() {
         return String.format(VISIT_DATE_INPUT_MESSAGE,
             EventCalendar.getInstance().getEventMonthValue());
     }
 
-    public static String getOrderInfoInputMessage() {
+    public String getOrderInfoInputMessage() {
         return ORDER_INFO_INPUT_MESSAGE;
     }
 
-    public static String getEventPreviewMessage(VisitDate visitDate) {
+    public String getEventPreviewMessage(VisitDate visitDate) {
         return String.format(EVENT_PREVIEW_MESSAGE,
             EventCalendar.getInstance().getEventMonthValue(), visitDate.visitDate());
     }
 
-    public static String getOrderMenuMessage() {
+    public String getOrderMenuMessage() {
         return ORDER_MENU_MESSAGE;
     }
 
-    public static String getTotalPriceBeforeDiscountMessage() {
+    public String getTotalPriceBeforeDiscountMessage() {
         return TOTAL_PRICE_BEFORE_DISCOUNT_MESSAGE;
     }
 
-    public static String getPresentMenusMessage() {
+    public String getPresentMenusMessage() {
         return PRESENT_MENU_MESSAGE;
     }
 
-    public static String getEventResultMessage() {
+    public String getEventResultMessage() {
         return EVENT_RESULT_MESSAGE;
     }
 
-    public static String getTotalBenefitPriceMessage() {
+    public String getTotalBenefitPriceMessage() {
         return TOTAL_BENEFIT_PRICE_MESSAGE;
     }
 
-    public static String getTotalPriceAfterDiscountMessage() {
+    public String getTotalPriceAfterDiscountMessage() {
         return TOTAL_PRICE_AFTER_DISCOUNT_MESSAGE;
     }
 
-    public static String getEventBadgeMessage() {
+    public String getEventBadgeMessage() {
         return String.format(EVENT_BADGE_MESSAGE, EventCalendar.getInstance().getEventMonthValue());
     }
 }

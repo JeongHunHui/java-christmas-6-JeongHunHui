@@ -1,7 +1,6 @@
 package christmas.view;
 
 import christmas.constant.ErrorMessage;
-import christmas.constant.PlannerMessage;
 import christmas.constant.badge.EventBadge;
 import christmas.exception.InvalidValueException;
 import christmas.model.EventResult;
@@ -15,56 +14,58 @@ public class OutputView {
 
     private static final String EMPTY = "";
 
-    private OutputMaker outputMaker;
+    private final OutputMaker outputMaker;
+    private final OutputMessage outputMessage;
 
-    public OutputView(OutputMaker outputMaker) {
+    public OutputView(OutputMaker outputMaker, OutputMessage outputMessage) {
         this.outputMaker = outputMaker;
+        this.outputMessage = outputMessage;
     }
 
     public void writeVisitDateInputMessage() {
-        write(PlannerMessage.getVisitDateInputMessage());
+        write(outputMessage.getVisitDateInputMessage());
     }
 
     public void writeOrderInfoInputMessage() {
-        write(PlannerMessage.getOrderInfoInputMessage());
+        write(outputMessage.getOrderInfoInputMessage());
     }
 
     public void writeEventPreviewMessage(VisitDate visitDate) {
-        write(PlannerMessage.getEventPreviewMessage(visitDate));
+        write(outputMessage.getEventPreviewMessage(visitDate));
     }
 
     public void writeOrderMenuMessage(Order order) {
-        write(PlannerMessage.getOrderMenuMessage());
+        write(outputMessage.getOrderMenuMessage());
         write(outputMaker.makeOrderOutput(order));
     }
 
     public void writeTotalPriceBeforeDiscount(Price totalPrice) {
-        write(PlannerMessage.getTotalPriceBeforeDiscountMessage());
+        write(outputMessage.getTotalPriceBeforeDiscountMessage());
         write(totalPrice.toString());
     }
 
     public void writePresentMenus(List<MenuAndCount> presentMenuAndCounts) {
-        write(PlannerMessage.getPresentMenusMessage());
+        write(outputMessage.getPresentMenusMessage());
         write(outputMaker.makePresentMenusOutput(presentMenuAndCounts));
     }
 
     public void writeEventResult(List<EventResult> eventResults) {
-        write(PlannerMessage.getEventResultMessage());
+        write(outputMessage.getEventResultMessage());
         write(outputMaker.makeEventResultOutput(eventResults));
     }
 
     public void writeTotalBenefitPrice(Price totalBenefitPrice) {
-        write(PlannerMessage.getTotalBenefitPriceMessage());
+        write(outputMessage.getTotalBenefitPriceMessage());
         write(totalBenefitPrice.toString());
     }
 
     public void writeTotalPriceAfterDiscount(Price totalPriceAfterDiscount) {
-        write(PlannerMessage.getTotalPriceAfterDiscountMessage());
+        write(outputMessage.getTotalPriceAfterDiscountMessage());
         write(totalPriceAfterDiscount.toString());
     }
 
     public void writeEventBadge(EventBadge appliedEventBadge) {
-        write(PlannerMessage.getEventBadgeMessage());
+        write(outputMessage.getEventBadgeMessage());
         write(appliedEventBadge.getName());
     }
 

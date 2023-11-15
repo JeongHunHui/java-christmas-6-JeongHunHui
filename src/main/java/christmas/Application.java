@@ -6,13 +6,15 @@ import christmas.service.OrderService;
 import christmas.view.InputMapper;
 import christmas.view.InputView;
 import christmas.view.OutputMaker;
+import christmas.view.OutputMessage;
 import christmas.view.OutputView;
 
 public class Application {
 
     public static void main(String[] args) {
         OutputMaker outputMaker = new OutputMaker();
-        OutputView outputView = new OutputView(outputMaker);
+        OutputMessage outputMessage = new OutputMessage();
+        OutputView outputView = new OutputView(outputMaker, outputMessage);
         InputMapper inputMapper = new InputMapper();
         InputView inputView = new InputView(inputMapper);
         OrderService orderService = new OrderService();
