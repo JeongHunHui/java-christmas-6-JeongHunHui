@@ -4,12 +4,14 @@ import christmas.constant.InputErrorMessage;
 import christmas.dto.request.OrderRequest;
 import christmas.dto.request.VisitDateRequest;
 import christmas.exception.InvalidValueException;
+import christmas.model.badge.ActiveEventBadges;
+import christmas.model.calendar.VisitDate;
+import christmas.model.event.ActiveEvents;
 import christmas.model.event.EventResults;
 import christmas.model.order.Order;
-import christmas.model.calendar.VisitDate;
-import christmas.model.badge.ActiveEventBadges;
-import christmas.model.event.ActiveEvents;
-import christmas.service.EventService;
+import christmas.model.price.BenefitPrice;
+import christmas.model.price.DiscountPrice;
+import christmas.model.price.Price;
 import christmas.service.OrderService;
 import christmas.view.input.InputView;
 import christmas.view.output.OutputView;
@@ -20,19 +22,16 @@ public class PlannerController {
     private final OutputView output;
     private final InputView input;
     private final OrderService orderService;
-    private final EventService eventService;
 
-    public PlannerController(OutputView output, InputView input, OrderService orderService,
-        EventService eventService) {
+    public PlannerController(OutputView output, InputView input, OrderService orderService) {
         this.output = output;
         this.input = input;
         this.orderService = orderService;
-        this.eventService = eventService;
     }
 
     public void run() {
-        VisitDate visitDate = readVisitDate();
-        Order order = readOrder();
+        final VisitDate visitDate = readVisitDate();
+        final Order order = readOrder();
         writeEventPreview(order, visitDate);
     }
 
@@ -55,17 +54,22 @@ public class PlannerController {
     private void writeEventPreview(Order order, VisitDate visitDate) {
         final EventResults eventResults = ActiveEvents.getInstance()
             .getAppliedEventResults(order, visitDate);
+        final Price totalPriceBeforeDiscount = order.getTotalPrice();
+        final BenefitPrice totalBenefitPrice = eventResults.getTotalBenefitPrice();
+        final DiscountPrice totalDiscountPrice = eventResults.getTotalDiscountPrice();
+
         output.writeEventPreviewMessage(visitDate);
         output.writeOrderMenuMessage(order);
-        output.writeTotalPriceBeforeDiscount(order.getTotalPrice());
+        output.writeTotalPriceBeforeDiscount(totalPriceBeforeDiscount);
         output.writePresentMenus(eventResults.getPresentMenuAndCounts());
         output.writeEventResult(eventResults);
-        output.writeTotalBenefitPrice(eventResults.getTotalBenefitPrice());
+        output.writeTotalBenefitPrice(totalBenefitPrice);
         output.writeTotalPriceAfterDiscount(
-            eventService.calculateTotalPriceAfterDiscount(order,
-                eventResults.getTotalDiscountPrice()));
-        output.writeEventBadge(ActiveEventBadges.getInstance()
-            .getAppliedEventBadge(eventResults.getTotalBenefitPrice()));
+            totalPriceBeforeDiscount.getDiscountedPrice(totalDiscountPrice)
+        );
+        output.writeEventBadge(
+            ActiveEventBadges.getInstance().getAppliedEventBadge(totalBenefitPrice)
+        );
     }
 
     private <T> T readUntilValidInput(Supplier<T> inputSupplier,

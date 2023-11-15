@@ -1,7 +1,6 @@
 package christmas;
 
 import christmas.controller.PlannerController;
-import christmas.service.EventService;
 import christmas.service.OrderService;
 import christmas.view.input.InputMapper;
 import christmas.view.input.InputValidator;
@@ -20,12 +19,10 @@ public class Application {
         InputMapper inputMapper = new InputMapper(inputValidator);
         InputView inputView = new InputView(inputMapper);
         OrderService orderService = new OrderService();
-        EventService eventService = new EventService();
         PlannerController plannerController = new PlannerController(
             outputView,
             inputView,
-            orderService,
-            eventService
+            orderService
         );
         plannerController.run();
     }
