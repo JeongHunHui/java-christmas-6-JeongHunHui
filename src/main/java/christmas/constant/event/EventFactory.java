@@ -15,7 +15,7 @@ import java.time.DayOfWeek;
 import java.util.List;
 import java.util.Set;
 
-public final class EventFactory {
+final class EventFactory {
 
     private EventFactory() {
         // 인스턴스 생성 방지

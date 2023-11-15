@@ -10,7 +10,7 @@ import christmas.model.Price;
 import christmas.model.VisitDate;
 import java.util.List;
 
-public class BasicEvent implements Event {
+class BasicEvent implements Event {
 
     private final String name;
     private final EventCondition basicCondition;

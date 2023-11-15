@@ -3,7 +3,7 @@ package christmas.constant.badge;
 import java.util.Comparator;
 import java.util.List;
 
-public enum EventBadgeConfig {
+enum EventBadgeConfig {
     DECEMBER_2023(List.of(EventBadge.STAR, EventBadge.TREE, EventBadge.SANTA)),
     ;
 
