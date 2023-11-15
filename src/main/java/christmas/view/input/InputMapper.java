@@ -8,7 +8,6 @@ import christmas.exception.InvalidVisitDateException;
 import christmas.model.MenuCount;
 import christmas.model.MenuName;
 import christmas.model.OrderInfo;
-import christmas.validator.InputValidator;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,15 +16,21 @@ public class InputMapper {
     private static final String ORDER_DELIMITER = ",";
     private static final String MENU_COUNT_DELIMITER = "-";
 
+    private final InputValidator inputValidator;
+
+    public InputMapper(InputValidator inputValidator) {
+        this.inputValidator = inputValidator;
+    }
+
     public VisitDateRequest inputToVisitDateRequest(String input) {
-        if (InputValidator.isNonInteger(input)) {
+        if (inputValidator.isNonInteger(input)) {
             throw new InvalidVisitDateException(DetailErrorMessage.VISIT_DATE_NOT_INTEGER);
         }
         return new VisitDateRequest(Integer.valueOf(input));
     }
 
     public OrderRequest inputToOrderRequest(String input) {
-        if (InputValidator.isInvalidOrderInput(input)) {
+        if (inputValidator.isInvalidOrderInput(input)) {
             throw new InvalidOrderException(DetailErrorMessage.INVALID_ORDER_FORMAT);
         }
 
