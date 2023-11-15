@@ -1,13 +1,14 @@
 package christmas.view;
 
 import christmas.constant.ErrorMessage;
-import christmas.model.badge.EventBadge;
 import christmas.exception.InvalidValueException;
-import christmas.model.EventResult;
+import christmas.model.BenefitPrice;
+import christmas.model.EventResults;
 import christmas.model.MenuAndCount;
 import christmas.model.Order;
 import christmas.model.Price;
 import christmas.model.VisitDate;
+import christmas.model.badge.EventBadge;
 import java.util.List;
 
 public class OutputView {
@@ -49,12 +50,12 @@ public class OutputView {
         write(outputMaker.makePresentMenusOutput(presentMenuAndCounts));
     }
 
-    public void writeEventResult(List<EventResult> eventResults) {
+    public void writeEventResult(EventResults eventResults) {
         write(outputMessage.getEventResultMessage());
         write(outputMaker.makeEventResultOutput(eventResults));
     }
 
-    public void writeTotalBenefitPrice(Price totalBenefitPrice) {
+    public void writeTotalBenefitPrice(BenefitPrice totalBenefitPrice) {
         write(outputMessage.getTotalBenefitPriceMessage());
         write(totalBenefitPrice.toString());
     }

@@ -1,6 +1,6 @@
 package christmas.model.badge;
 
-import christmas.model.Price;
+import christmas.model.BenefitPrice;
 import java.util.List;
 
 public class ActiveEventBadges {
@@ -21,7 +21,7 @@ public class ActiveEventBadges {
         return instance;
     }
 
-    public EventBadge getAppliedEventBadge(Price totalBenefitPrice) {
+    public EventBadge getAppliedEventBadge(BenefitPrice totalBenefitPrice) {
         for (EventBadge eventBadge : eventBadges) {
             if (eventBadge.isEventBadgeCanApplied(totalBenefitPrice)) {
                 return eventBadge;

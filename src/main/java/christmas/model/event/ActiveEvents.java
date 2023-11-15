@@ -1,6 +1,7 @@
 package christmas.model.event;
 
 import christmas.model.EventResult;
+import christmas.model.EventResults;
 import christmas.model.Order;
 import christmas.model.VisitDate;
 import java.util.ArrayList;
@@ -24,13 +25,13 @@ public class ActiveEvents {
         return instance;
     }
 
-    public List<EventResult> getAppliedEventResults(Order order, VisitDate visitDate) {
+    public EventResults getAppliedEventResults(Order order, VisitDate visitDate) {
         final List<EventResult> eventResults = new ArrayList<>();
         events.stream().forEach(event -> {
             if (event.isEventApplied(order, visitDate)) {
                 eventResults.add(event.getEventResult(order, visitDate));
             }
         });
-        return eventResults;
+        return new EventResults(eventResults);
     }
 }

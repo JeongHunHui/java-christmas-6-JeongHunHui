@@ -3,6 +3,7 @@ package christmas.model;
 import christmas.constant.DetailErrorMessage;
 import christmas.exception.InvalidPriceException;
 import java.text.NumberFormat;
+import java.util.List;
 import java.util.Locale;
 
 public record Price(Integer price) {
@@ -20,6 +21,14 @@ public record Price(Integer price) {
         if (isBelowMinPrice) {
             throw new InvalidPriceException(DetailErrorMessage.PRICE_CAN_NOT_BELOW_MIN_PRICE);
         }
+    }
+
+    public static Price getTotalPrice(List<Price> prices) {
+        return new Price(prices.stream().mapToInt(Price::price).sum());
+    }
+
+    public Price getDiscountedPrice(DiscountPrice discountPrice) {
+        return new Price(price - discountPrice.price());
     }
 
     @Override

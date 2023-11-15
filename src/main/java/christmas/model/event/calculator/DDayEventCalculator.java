@@ -1,7 +1,7 @@
 package christmas.model.event.calculator;
 
+import christmas.model.BenefitPrice;
 import christmas.model.Order;
-import christmas.model.Price;
 import christmas.model.VisitDate;
 
 public class DDayEventCalculator implements EventCalculator {
@@ -15,8 +15,8 @@ public class DDayEventCalculator implements EventCalculator {
     }
 
     @Override
-    public Price calculateBenefitPrice(Order order, VisitDate visitDate) {
-        return new Price(defaultDiscountPrice + visitDate.visitDate() * discountPricePerDay
+    public BenefitPrice calculateBenefitPrice(Order order, VisitDate visitDate) {
+        return new BenefitPrice(defaultDiscountPrice + visitDate.visitDate() * discountPricePerDay
             - discountPricePerDay);
     }
 }

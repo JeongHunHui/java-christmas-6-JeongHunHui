@@ -1,9 +1,9 @@
 package christmas.model.event.calculator;
 
-import christmas.model.menu.MenuCategory;
+import christmas.model.BenefitPrice;
 import christmas.model.Order;
-import christmas.model.Price;
 import christmas.model.VisitDate;
+import christmas.model.menu.MenuCategory;
 
 public class MenuCategoryCountEventCalculator implements EventCalculator {
 
@@ -17,7 +17,7 @@ public class MenuCategoryCountEventCalculator implements EventCalculator {
     }
 
     @Override
-    public Price calculateBenefitPrice(Order order, VisitDate visitDate) {
-        return new Price(order.getMenuCountByCategory(menuCategory) * discountPricePerCount);
+    public BenefitPrice calculateBenefitPrice(Order order, VisitDate visitDate) {
+        return new BenefitPrice(order.getMenuCountByCategory(menuCategory) * discountPricePerCount);
     }
 }

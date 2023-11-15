@@ -1,5 +1,6 @@
 package christmas.model.event;
 
+import christmas.model.BenefitPrice;
 import christmas.model.event.calculator.EventCalculator;
 import christmas.model.event.condition.BasicEventCondition;
 import christmas.model.event.condition.EventCondition;
@@ -32,7 +33,7 @@ class BasicEvent implements Event {
     }
 
     @Override
-    public Price getEventBenefitPrice(Order order, VisitDate visitDate) {
+    public BenefitPrice getEventBenefitPrice(Order order, VisitDate visitDate) {
         return eventCalculator.calculateBenefitPrice(order, visitDate);
     }
 

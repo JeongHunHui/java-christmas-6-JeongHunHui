@@ -1,10 +1,10 @@
 package christmas.view;
 
-import christmas.model.menu.Menu;
-import christmas.model.EventResult;
+import christmas.model.EventResults;
 import christmas.model.MenuAndCount;
 import christmas.model.MenuCount;
 import christmas.model.Order;
+import christmas.model.menu.Menu;
 import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
@@ -14,9 +14,8 @@ public class OutputMaker {
     private static final String ORDER_FORMAT = "%s %d개";
     private static final String PRESENT_MENU_FORMAT = "%s %d개";
     private static final String PRESENT_MENU_NOT_EXIST_MESSAGE = "없음";
-    private static final String EVENT_RESULT_FORMAT = "%s: -%s";
+    private static final String EVENT_RESULT_FORMAT = "%s: %s";
     private static final String NEW_LINE = "\n";
-    private static final Integer ZERO = 0;
 
     public String makeOrderOutput(Order order) {
         Map<Menu, MenuCount> orderMap = order.order();
@@ -29,7 +28,7 @@ public class OutputMaker {
     }
 
     public String makePresentMenusOutput(List<MenuAndCount> presentMenuAndCounts) {
-        if (ZERO.equals(presentMenuAndCounts.size())) {
+        if (presentMenuAndCounts.isEmpty()) {
             return PRESENT_MENU_NOT_EXIST_MESSAGE;
         }
         StringJoiner stringJoiner = new StringJoiner(NEW_LINE);
@@ -40,12 +39,12 @@ public class OutputMaker {
         return stringJoiner.toString();
     }
 
-    public String makeEventResultOutput(List<EventResult> eventResults) {
-        if (ZERO.equals(eventResults.size())) {
+    public String makeEventResultOutput(EventResults eventResults) {
+        if (eventResults.isEmpty()) {
             return PRESENT_MENU_NOT_EXIST_MESSAGE;
         }
         StringJoiner stringJoiner = new StringJoiner(NEW_LINE);
-        eventResults.forEach(
+        eventResults.results().forEach(
             eventResult ->
                 stringJoiner.add(String.format(EVENT_RESULT_FORMAT, eventResult.eventName(),
                     eventResult.benefitPrice().toString()))

@@ -1,6 +1,6 @@
 package christmas.model.badge;
 
-import christmas.model.Price;
+import christmas.model.BenefitPrice;
 
 public enum EventBadge {
     NONE("없음", 0),
@@ -17,7 +17,7 @@ public enum EventBadge {
         this.minCriteriaPrice = minCriteriaPrice;
     }
 
-    Boolean isEventBadgeCanApplied(Price totalBenefitPrice) {
+    Boolean isEventBadgeCanApplied(BenefitPrice totalBenefitPrice) {
         return minCriteriaPrice <= totalBenefitPrice.price();
     }
 

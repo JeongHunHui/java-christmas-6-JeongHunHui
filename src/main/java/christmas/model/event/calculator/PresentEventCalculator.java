@@ -1,10 +1,10 @@
 package christmas.model.event.calculator;
 
-import christmas.model.menu.Menu;
+import christmas.model.BenefitPrice;
 import christmas.model.MenuAndCount;
 import christmas.model.Order;
-import christmas.model.Price;
 import christmas.model.VisitDate;
+import christmas.model.menu.Menu;
 import java.util.List;
 
 public class PresentEventCalculator implements EventCalculator {
@@ -16,8 +16,8 @@ public class PresentEventCalculator implements EventCalculator {
     }
 
     @Override
-    public Price calculateBenefitPrice(Order order, VisitDate visitDate) {
-        return new Price(
+    public BenefitPrice calculateBenefitPrice(Order order, VisitDate visitDate) {
+        return new BenefitPrice(
             presentMenuAndCounts.stream().map(MenuAndCount::menu).mapToInt(Menu::getPrice).sum());
     }
 }
