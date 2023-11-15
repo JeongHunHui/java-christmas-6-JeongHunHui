@@ -2,6 +2,7 @@ package christmas.service;
 
 import christmas.model.EventResult;
 import christmas.model.MenuAndCount;
+import christmas.model.Price;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,5 +18,10 @@ public class EventService {
                 )
             );
         return presentMenuAndCounts;
+    }
+
+    public Price getTotalBenefitPrice(List<EventResult> eventResults) {
+        return new Price(
+            eventResults.stream().map(EventResult::benefitPrice).mapToInt(Price::price).sum());
     }
 }
