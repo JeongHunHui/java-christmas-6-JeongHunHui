@@ -1,13 +1,14 @@
 package christmas.constant.menu;
 
 import christmas.model.MenuName;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MenuBoard {
 
     private static MenuBoard instance;
+    private static MenuConfig menuConfig = MenuConfig.DECEMBER_2023;
 
     private final Map<String, Menu> menuMap;
 
@@ -17,14 +18,14 @@ public class MenuBoard {
 
     public static MenuBoard getInstance() {
         if (instance == null) {
-            instance = new MenuBoard(makeMenuMap());
+            instance = new MenuBoard(makeMenuMap(menuConfig.getMenus()));
         }
         return instance;
     }
 
-    private static Map<String, Menu> makeMenuMap() {
+    private static Map<String, Menu> makeMenuMap(List<Menu> menus) {
         Map<String, Menu> menuMap = new HashMap<>();
-        Arrays.stream(Menu.values()).forEach(menu -> menuMap.put(menu.getName(), menu));
+        menus.forEach(menu -> menuMap.put(menu.getName(), menu));
         return menuMap;
     }
 
