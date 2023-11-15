@@ -5,8 +5,8 @@ import java.util.List;
 
 public class ActiveEventBadges {
 
-    private static EventBadgeConfig eventBadgeConfig = EventBadgeConfig.DECEMBER_2023;
     private static ActiveEventBadges instance;
+    private static EventBadgeConfig eventBadgeConfig = EventBadgeConfig.DECEMBER_2023;
 
     private final List<EventBadge> eventBadges;
 
