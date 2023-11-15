@@ -57,6 +57,11 @@ public class OutputView {
         write(totalBenefitPrice.toString());
     }
 
+    public void writeTotalPriceAfterDiscount(Price totalPriceAfterDiscount) {
+        write(PlannerMessage.getTotalPriceAfterDiscountMessage());
+        write(totalPriceAfterDiscount.toString());
+    }
+
     public void writeNewLine() {
         write(EMPTY);
     }

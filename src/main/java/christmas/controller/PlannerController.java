@@ -66,6 +66,9 @@ public class PlannerController {
         output.writeEventResult(eventResults);
         output.writeNewLine();
         output.writeTotalBenefitPrice(eventService.getTotalBenefitPrice(eventResults));
+        output.writeNewLine();
+        output.writeTotalPriceAfterDiscount(
+            eventService.calculateTotalPriceAfterDiscount(order, eventResults));
     }
 
     private <T> T readUntilValidInput(Supplier<T> inputSupplier, ErrorMessage errorMessage) {
