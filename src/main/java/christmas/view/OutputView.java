@@ -2,6 +2,7 @@ package christmas.view;
 
 import christmas.constant.ErrorMessage;
 import christmas.constant.PlannerMessage;
+import christmas.constant.badge.EventBadge;
 import christmas.exception.InvalidValueException;
 import christmas.model.EventResult;
 import christmas.model.MenuAndCount;
@@ -60,6 +61,11 @@ public class OutputView {
     public void writeTotalPriceAfterDiscount(Price totalPriceAfterDiscount) {
         write(PlannerMessage.getTotalPriceAfterDiscountMessage());
         write(totalPriceAfterDiscount.toString());
+    }
+
+    public void writeEventBadge(EventBadge appliedEventBadge) {
+        write(PlannerMessage.getEventBadgeMessage());
+        write(appliedEventBadge.getName());
     }
 
     public void writeNewLine() {

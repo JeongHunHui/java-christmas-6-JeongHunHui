@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.constant.ErrorMessage;
+import christmas.constant.badge.ActiveEventBadges;
 import christmas.constant.event.ActiveEvents;
 import christmas.dto.request.OrderRequest;
 import christmas.dto.request.VisitDateRequest;
@@ -69,6 +70,9 @@ public class PlannerController {
         output.writeNewLine();
         output.writeTotalPriceAfterDiscount(
             eventService.calculateTotalPriceAfterDiscount(order, eventResults));
+        output.writeNewLine();
+        output.writeEventBadge(ActiveEventBadges.getInstance()
+            .getAppliedEventBadge(eventService.getTotalBenefitPrice(eventResults)));
     }
 
     private <T> T readUntilValidInput(Supplier<T> inputSupplier, ErrorMessage errorMessage) {
