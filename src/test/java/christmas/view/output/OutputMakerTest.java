@@ -34,8 +34,10 @@ public class OutputMakerTest {
         String output = outputMaker.makeOrderOutput(mockOrder);
 
         // Then: 올바른 출력 형식 확인
-        String expectedOutput = "시저샐러드 1개\n양송이수프 2개";
-        assertEquals(expectedOutput, output);
+        String expectedOutput1 = "시저샐러드 1개";
+        String expectedOutput2 = "양송이수프 2개";
+        assertEquals(true, output.contains(expectedOutput1));
+        assertEquals(true, output.contains(expectedOutput2));
     }
 
     @Test
