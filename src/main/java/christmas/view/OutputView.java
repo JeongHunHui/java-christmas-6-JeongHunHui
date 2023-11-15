@@ -3,9 +3,9 @@ package christmas.view;
 import christmas.constant.ErrorMessage;
 import christmas.constant.PlannerMessage;
 import christmas.exception.InvalidValueException;
+import christmas.model.EventResult;
 import christmas.model.MenuAndCount;
 import christmas.model.Order;
-import christmas.model.OrderInfo;
 import christmas.model.Price;
 import christmas.model.VisitDate;
 import java.util.List;
@@ -45,6 +45,11 @@ public class OutputView {
     public void writePresentMenus(List<MenuAndCount> presentMenuAndCounts) {
         write(PlannerMessage.getPresentMenusMessage());
         write(outputMaker.makePresentMenusOutput(presentMenuAndCounts));
+    }
+
+    public void writeEventResult(List<EventResult> eventResults) {
+        write(PlannerMessage.getEventResultMessage());
+        write(outputMaker.makeEventResultOutput(eventResults));
     }
 
     public void writeNewLine() {
