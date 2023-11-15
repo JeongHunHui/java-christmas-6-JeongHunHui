@@ -1,9 +1,9 @@
 package christmas.view.output;
 
-import christmas.model.EventResults;
-import christmas.model.MenuAndCount;
-import christmas.model.MenuCount;
-import christmas.model.Order;
+import christmas.model.event.EventResults;
+import christmas.model.menu.MenuAndCount;
+import christmas.model.menu.MenuCount;
+import christmas.model.order.Order;
 import christmas.model.menu.Menu;
 import java.util.List;
 import java.util.Map;

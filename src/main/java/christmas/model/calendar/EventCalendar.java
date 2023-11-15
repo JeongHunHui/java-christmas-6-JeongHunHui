@@ -1,6 +1,5 @@
 package christmas.model.calendar;
 
-import christmas.model.VisitDate;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;

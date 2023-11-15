@@ -1,9 +1,8 @@
 package christmas.model.event;
 
-import christmas.model.BenefitPrice;
-import christmas.model.EventResult;
-import christmas.model.Order;
-import christmas.model.VisitDate;
+import christmas.model.price.BenefitPrice;
+import christmas.model.order.Order;
+import christmas.model.calendar.VisitDate;
 
 public interface Event {
 

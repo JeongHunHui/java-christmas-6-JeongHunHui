@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.model.price;
 
 import christmas.constant.DetailErrorMessage;
 import christmas.exception.InvalidPriceException;

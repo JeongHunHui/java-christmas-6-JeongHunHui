@@ -5,9 +5,9 @@ import christmas.dto.request.OrderRequest;
 import christmas.dto.request.VisitDateRequest;
 import christmas.exception.InvalidOrderException;
 import christmas.exception.InvalidVisitDateException;
-import christmas.model.MenuCount;
-import christmas.model.MenuName;
-import christmas.model.OrderInfo;
+import christmas.model.menu.MenuCount;
+import christmas.model.menu.MenuName;
+import christmas.model.order.OrderInfo;
 import java.util.Arrays;
 import java.util.List;
 

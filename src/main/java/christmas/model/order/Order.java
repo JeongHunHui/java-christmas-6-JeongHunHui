@@ -1,6 +1,8 @@
-package christmas.model;
+package christmas.model.order;
 
 import christmas.constant.DetailErrorMessage;
+import christmas.model.menu.MenuCount;
+import christmas.model.price.Price;
 import christmas.model.menu.Menu;
 import christmas.model.menu.MenuCategory;
 import christmas.exception.InvalidOrderException;

@@ -1,8 +1,8 @@
 package christmas.model.event.condition;
 
 import christmas.model.menu.MenuCategory;
-import christmas.model.Order;
-import christmas.model.VisitDate;
+import christmas.model.order.Order;
+import christmas.model.calendar.VisitDate;
 
 public class CategoryIncludeEventCondition implements EventCondition {
 

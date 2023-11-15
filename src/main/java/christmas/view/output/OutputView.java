@@ -2,12 +2,12 @@ package christmas.view.output;
 
 import christmas.constant.ErrorMessage;
 import christmas.exception.InvalidValueException;
-import christmas.model.BenefitPrice;
-import christmas.model.EventResults;
-import christmas.model.MenuAndCount;
-import christmas.model.Order;
-import christmas.model.Price;
-import christmas.model.VisitDate;
+import christmas.model.price.BenefitPrice;
+import christmas.model.event.EventResults;
+import christmas.model.menu.MenuAndCount;
+import christmas.model.order.Order;
+import christmas.model.price.Price;
+import christmas.model.calendar.VisitDate;
 import christmas.model.badge.EventBadge;
 import java.util.List;
 

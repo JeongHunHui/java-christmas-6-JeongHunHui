@@ -1,14 +1,12 @@
 package christmas.model.event;
 
-import christmas.model.BenefitPrice;
+import christmas.model.price.BenefitPrice;
 import christmas.model.event.calculator.EventCalculator;
 import christmas.model.event.condition.BasicEventCondition;
 import christmas.model.event.condition.EventCondition;
 import christmas.exception.EventNotAppliedException;
-import christmas.model.EventResult;
-import christmas.model.Order;
-import christmas.model.Price;
-import christmas.model.VisitDate;
+import christmas.model.order.Order;
+import christmas.model.calendar.VisitDate;
 import java.util.List;
 
 class BasicEvent implements Event {

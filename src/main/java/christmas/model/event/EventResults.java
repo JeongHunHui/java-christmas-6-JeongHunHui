@@ -1,5 +1,8 @@
-package christmas.model;
+package christmas.model.event;
 
+import christmas.model.price.BenefitPrice;
+import christmas.model.price.DiscountPrice;
+import christmas.model.menu.MenuAndCount;
 import java.util.Collections;
 import java.util.List;
 

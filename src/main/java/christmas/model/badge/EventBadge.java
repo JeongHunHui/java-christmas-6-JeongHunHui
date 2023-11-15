@@ -1,6 +1,6 @@
 package christmas.model.badge;
 
-import christmas.model.BenefitPrice;
+import christmas.model.price.BenefitPrice;
 
 public enum EventBadge {
     NONE("없음", 0),

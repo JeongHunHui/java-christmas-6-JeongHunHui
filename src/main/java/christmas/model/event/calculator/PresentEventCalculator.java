@@ -1,9 +1,9 @@
 package christmas.model.event.calculator;
 
-import christmas.model.BenefitPrice;
-import christmas.model.MenuAndCount;
-import christmas.model.Order;
-import christmas.model.VisitDate;
+import christmas.model.price.BenefitPrice;
+import christmas.model.menu.MenuAndCount;
+import christmas.model.order.Order;
+import christmas.model.calendar.VisitDate;
 import christmas.model.menu.Menu;
 import java.util.List;
 

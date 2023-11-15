@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.model.calendar;
 
 import christmas.constant.DetailErrorMessage;
 import christmas.model.calendar.EventCalendar;

@@ -1,6 +1,6 @@
 package christmas.dto.request;
 
-import christmas.model.OrderInfo;
+import christmas.model.order.OrderInfo;
 import java.util.Collections;
 import java.util.List;
 

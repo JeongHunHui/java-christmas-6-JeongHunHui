@@ -1,9 +1,7 @@
 package christmas.model.event;
 
-import christmas.model.EventResult;
-import christmas.model.EventResults;
-import christmas.model.Order;
-import christmas.model.VisitDate;
+import christmas.model.order.Order;
+import christmas.model.calendar.VisitDate;
 import java.util.ArrayList;
 import java.util.List;
 
