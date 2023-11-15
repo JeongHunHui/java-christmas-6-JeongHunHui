@@ -1,13 +1,15 @@
 package christmas.dto.request;
 
-import christmas.model.order.OrderInfo;
+import christmas.model.menu.MenuAndCount;
 import java.util.Collections;
 import java.util.List;
 
-public record OrderRequest(List<OrderInfo> orderInfos) {
+;
+
+public record OrderRequest(List<MenuAndCount> menuAndCounts) {
 
     @Override
-    public List<OrderInfo> orderInfos() {
-        return Collections.unmodifiableList(orderInfos);
+    public List<MenuAndCount> menuAndCounts() {
+        return Collections.unmodifiableList(menuAndCounts);
     }
 }

@@ -5,9 +5,10 @@ import christmas.dto.request.OrderRequest;
 import christmas.dto.request.VisitDateRequest;
 import christmas.exception.InvalidOrderException;
 import christmas.exception.InvalidVisitDateException;
+import christmas.model.menu.MenuAndCount;
+import christmas.model.menu.MenuBoard;
 import christmas.model.menu.MenuCount;
 import christmas.model.menu.MenuName;
-import christmas.model.order.OrderInfo;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,17 +35,17 @@ public class InputMapper {
             throw new InvalidOrderException(DetailErrorMessage.INVALID_ORDER_FORMAT);
         }
 
-        return new OrderRequest(inputToOrderInfos(input));
+        return new OrderRequest(inputToMenuAndCounts(input));
     }
 
-    private List<OrderInfo> inputToOrderInfos(String input) {
+    private List<MenuAndCount> inputToMenuAndCounts(String input) {
         return Arrays.stream(input.split(ORDER_DELIMITER))
-            .map(info -> info.split(MENU_COUNT_DELIMITER)).map(this::makeOrderInfo).toList();
+            .map(info -> info.split(MENU_COUNT_DELIMITER)).map(this::makeMenuAndCount).toList();
     }
 
-    private OrderInfo makeOrderInfo(String[] orderInfoArray) {
-        return new OrderInfo(
-            new MenuName(orderInfoArray[0]),
+    private MenuAndCount makeMenuAndCount(String[] orderInfoArray) {
+        return new MenuAndCount(
+            MenuBoard.getInstance().getMenu(new MenuName(orderInfoArray[0])),
             new MenuCount(Integer.valueOf(orderInfoArray[1]))
         );
     }
