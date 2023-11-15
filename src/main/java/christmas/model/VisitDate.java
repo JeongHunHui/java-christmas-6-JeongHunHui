@@ -1,7 +1,7 @@
 package christmas.model;
 
 import christmas.constant.DetailErrorMessage;
-import christmas.constant.calendar.EventCalendar;
+import christmas.model.calendar.EventCalendar;
 import christmas.exception.InvalidVisitDateException;
 
 public record VisitDate(Integer visitDate) {

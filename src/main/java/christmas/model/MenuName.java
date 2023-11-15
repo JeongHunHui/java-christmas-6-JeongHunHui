@@ -1,7 +1,7 @@
 package christmas.model;
 
 import christmas.constant.DetailErrorMessage;
-import christmas.constant.menu.MenuBoard;
+import christmas.model.menu.MenuBoard;
 import christmas.exception.InvalidMenuNameException;
 
 public record MenuName(String menuName) {

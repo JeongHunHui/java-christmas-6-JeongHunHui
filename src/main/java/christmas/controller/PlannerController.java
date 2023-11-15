@@ -1,8 +1,8 @@
 package christmas.controller;
 
 import christmas.constant.ErrorMessage;
-import christmas.constant.badge.ActiveEventBadges;
-import christmas.constant.event.ActiveEvents;
+import christmas.model.badge.ActiveEventBadges;
+import christmas.model.event.ActiveEvents;
 import christmas.dto.request.OrderRequest;
 import christmas.dto.request.VisitDateRequest;
 import christmas.exception.InvalidValueException;

@@ -1,8 +1,8 @@
 package christmas.model;
 
 import christmas.constant.DetailErrorMessage;
-import christmas.constant.menu.Menu;
-import christmas.constant.menu.MenuCategory;
+import christmas.model.menu.Menu;
+import christmas.model.menu.MenuCategory;
 import christmas.exception.InvalidOrderException;
 import java.util.Collections;
 import java.util.List;

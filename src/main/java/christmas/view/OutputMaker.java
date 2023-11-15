@@ -1,6 +1,6 @@
 package christmas.view;
 
-import christmas.constant.menu.Menu;
+import christmas.model.menu.Menu;
 import christmas.model.EventResult;
 import christmas.model.MenuAndCount;
 import christmas.model.MenuCount;

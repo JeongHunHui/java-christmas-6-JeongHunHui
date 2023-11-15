@@ -1,7 +1,7 @@
 package christmas.view;
 
 import christmas.constant.ErrorMessage;
-import christmas.constant.badge.EventBadge;
+import christmas.model.badge.EventBadge;
 import christmas.exception.InvalidValueException;
 import christmas.model.EventResult;
 import christmas.model.MenuAndCount;

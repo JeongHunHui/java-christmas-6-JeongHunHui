@@ -1,8 +1,8 @@
 package christmas.service;
 
 import christmas.constant.DetailErrorMessage;
-import christmas.constant.menu.Menu;
-import christmas.constant.menu.MenuBoard;
+import christmas.model.menu.Menu;
+import christmas.model.menu.MenuBoard;
 import christmas.dto.request.OrderRequest;
 import christmas.exception.InvalidOrderException;
 import christmas.model.MenuCount;

@@ -1,6 +1,6 @@
 package christmas.view;
 
-import christmas.constant.calendar.EventCalendar;
+import christmas.model.calendar.EventCalendar;
 import christmas.model.VisitDate;
 
 public final class OutputMessage {
