@@ -1,6 +1,6 @@
 package christmas.view.output;
 
-import christmas.constant.ErrorMessage;
+import christmas.constant.InputErrorMessage;
 import christmas.exception.InvalidValueException;
 import christmas.model.price.BenefitPrice;
 import christmas.model.event.EventResults;
@@ -36,46 +36,54 @@ public class OutputView {
     }
 
     public void writeOrderMenuMessage(Order order) {
+        writeEmptyLine();
         write(outputMessage.getOrderMenuMessage());
         write(outputMaker.makeOrderOutput(order));
     }
 
     public void writeTotalPriceBeforeDiscount(Price totalPrice) {
+        writeEmptyLine();
         write(outputMessage.getTotalPriceBeforeDiscountMessage());
         write(totalPrice.toString());
     }
 
     public void writePresentMenus(List<MenuAndCount> presentMenuAndCounts) {
+        writeEmptyLine();
         write(outputMessage.getPresentMenusMessage());
         write(outputMaker.makePresentMenusOutput(presentMenuAndCounts));
     }
 
     public void writeEventResult(EventResults eventResults) {
+        writeEmptyLine();
         write(outputMessage.getEventResultMessage());
         write(outputMaker.makeEventResultOutput(eventResults));
     }
 
     public void writeTotalBenefitPrice(BenefitPrice totalBenefitPrice) {
+        writeEmptyLine();
         write(outputMessage.getTotalBenefitPriceMessage());
         write(totalBenefitPrice.toString());
     }
 
     public void writeTotalPriceAfterDiscount(Price totalPriceAfterDiscount) {
+        writeEmptyLine();
         write(outputMessage.getTotalPriceAfterDiscountMessage());
         write(totalPriceAfterDiscount.toString());
     }
 
     public void writeEventBadge(EventBadge appliedEventBadge) {
+        writeEmptyLine();
         write(outputMessage.getEventBadgeMessage());
         write(appliedEventBadge.getName());
     }
 
-    public void writeNewLine() {
-        write(EMPTY);
+    public void writeExceptionMessage(InputErrorMessage inputErrorMessage,
+        InvalidValueException e) {
+        write(inputErrorMessage.message(e.getMessage()));
     }
 
-    public void writeExceptionMessage(ErrorMessage errorMessage, InvalidValueException e) {
-        write(errorMessage.message(e.getMessage()));
+    private void writeEmptyLine() {
+        write(EMPTY);
     }
 
     private void write(String message) {

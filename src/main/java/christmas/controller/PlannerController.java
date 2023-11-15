@@ -1,6 +1,6 @@
 package christmas.controller;
 
-import christmas.constant.ErrorMessage;
+import christmas.constant.InputErrorMessage;
 import christmas.dto.request.OrderRequest;
 import christmas.dto.request.VisitDateRequest;
 import christmas.exception.InvalidValueException;
@@ -39,7 +39,7 @@ public class PlannerController {
     private VisitDate readVisitDate() {
         output.writeVisitDateInputMessage();
         VisitDateRequest visitDateRequest = readUntilValidInput(
-            () -> input.readVisitDate(), ErrorMessage.INVALID_VISIT_DATE
+            () -> input.readVisitDate(), InputErrorMessage.INVALID_VISIT_DATE
         );
         return new VisitDate(visitDateRequest.dayOfMonth());
     }
@@ -49,33 +49,27 @@ public class PlannerController {
         return readUntilValidInput(() -> {
             OrderRequest orderRequest = input.readOrder();
             return orderService.makeOrderByRequest(orderRequest);
-        }, ErrorMessage.INVALID_ORDER);
+        }, InputErrorMessage.INVALID_ORDER);
     }
 
     private void writeEventPreview(Order order, VisitDate visitDate) {
         final EventResults eventResults = ActiveEvents.getInstance()
             .getAppliedEventResults(order, visitDate);
         output.writeEventPreviewMessage(visitDate);
-        output.writeNewLine();
         output.writeOrderMenuMessage(order);
-        output.writeNewLine();
         output.writeTotalPriceBeforeDiscount(order.getTotalPrice());
-        output.writeNewLine();
         output.writePresentMenus(eventResults.getPresentMenuAndCounts());
-        output.writeNewLine();
         output.writeEventResult(eventResults);
-        output.writeNewLine();
         output.writeTotalBenefitPrice(eventResults.getTotalBenefitPrice());
-        output.writeNewLine();
         output.writeTotalPriceAfterDiscount(
             eventService.calculateTotalPriceAfterDiscount(order,
                 eventResults.getTotalDiscountPrice()));
-        output.writeNewLine();
         output.writeEventBadge(ActiveEventBadges.getInstance()
             .getAppliedEventBadge(eventResults.getTotalBenefitPrice()));
     }
 
-    private <T> T readUntilValidInput(Supplier<T> inputSupplier, ErrorMessage errorMessage) {
+    private <T> T readUntilValidInput(Supplier<T> inputSupplier,
+        InputErrorMessage inputErrorMessage) {
         T input = null;
         boolean isInValidInput = true;
 
@@ -84,7 +78,7 @@ public class PlannerController {
                 input = inputSupplier.get();
                 isInValidInput = false;
             } catch (InvalidValueException e) {
-                output.writeExceptionMessage(errorMessage, e);
+                output.writeExceptionMessage(inputErrorMessage, e);
             }
         }
 
